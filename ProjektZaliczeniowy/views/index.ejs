@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteka</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Biblioteka cyfrowa</h1>
+        <table>
+            <tr>
+                <th>Tytuł</th>
+                <th>Autor</th>
+                <th>Rok</th>
+                <th>Edytuj/Usuń</th>
+            </tr>
+            <% books.forEach((book, index) => { %>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book.year %></td>
+                    <td class="action-buttons">
+                        <form action="/edit_book/<%= index %>" method="get">
+                            <button type="submit">Edytuj</button>
+                        </form>
+                        <form action="/delete_book/<%= index %>" method="get">
+                            <button type="submit">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+        <a href="/add_book" class="add-book-button">Dodaj książkę</a>
+    </div>
+</body>
+</html>
